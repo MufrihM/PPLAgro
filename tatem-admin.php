@@ -25,6 +25,33 @@ if(isset($_POST['submit'])){
             die(mysqli_error($data));
         }
     }
+}elseif(isset($_POST['ubah'])){
+    $id = $_POST['idP'];
+    $name = $_POST['namaP'];
+    $harga = $_POST['hargaP'];
+    $image = $_FILES['gambar'];
+
+    $imageTmp = $image['tmp_name'];
+    $imageName = $image['name'];
+    $imageSeperated = explode('.', $imageName);
+    $fileExtension = strtolower($imageSeperated[1]);
+    
+    $extension = array('jpeg', 'jpg', 'png');
+    if(in_array($fileExtension, $extension)){
+        $uploadImage = 'images/'.$imageName;
+        move_uploaded_file($imageTmp, $uploadImage);
+        $sql="update produk 
+        set Nama = '$name', Harga = '$harga', Foto = '$uploadImage'
+        where id = '$id'";
+        $result = mysqli_query($data, $sql);
+        if($result){
+            echo '<div class="alert alert-success" role="alert">
+            Data berhasil diubah
+          </div>';
+        }else{
+            die(mysqli_error($data));
+        }
+    }
 }
 
 ?>
