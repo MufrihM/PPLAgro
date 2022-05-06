@@ -1,3 +1,7 @@
+<?php
+require_once('./fungsi.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
     <style>
         .kotak{
             background-color: #EEF1E0;
-            height: 400px;
+            height: 500px;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -25,26 +29,18 @@
     </nav>
     <button class="btn btn-lg mt-2"><ion-icon name="arrow-back-outline"></ion-icon></button>
     <div class="container-fluid">
-        <div class="kotak mx-2">
+        <div class="kotak mx-2 mb-3">
             <h4 class="pt-3 px-3">Mengubah produk</h4>
-            <form class="row">
-                <label for="namaP" class="form-label mx-3 mt-3">Nama Produk</label>
-                <div class="col-12 mb-1 px-4">
-                    <input type="text" class="form-control" id="namaP" value="Tahu Pong">
-                </div>
-                <label for="hargaP" class="form-label mx-3">Harga Produk</label>
-                <div class="col-12 mb-1 px-4">
-                    <input type="text" class="form-control" id="hargaP" value="13000">
-                </div>
-                <label for="cetakan" class="form-label mx-3">Jumlah Cetakan</label>
-                <div class="col-12 mb-1 px-4">
-                    <input type="text" class="form-control" id="cetakan" value="20">
+            <form action="tatem-admin.php" class="row" method="post" enctype="multipart/form-data">
+                <?php inputFields("Id Produk", "int", "idP", "")?>
+                <?php inputFields("Nama Produk", "text", "namaP", "")?>
+                <?php inputFields("Harga Produk", "text", "hargaP", "")?>
+                <?php inputFields("Upload Gambar", "file", "gambar", "")?>
+                <div class="row justify-content-center pt-4">
+                    <button type="submit" class="mb-2 mx-2 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 btn text-light" style="background-color: #448D09;" name="ubah">Ubah</button>
+                    <button type="button" class="mb-2 mx-2 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 btn text-light" style="background-color: #DD2902;">Batal</button>
                 </div>
             </form>
-            <div class="row justify-content-center pt-4">
-                <button type="button" class="mb-2 mx-2 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 btn text-light" style="background-color: #448D09;">Simpan</button>
-                <button type="button" class="mb-2 mx-2 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 btn text-light" style="background-color: #DD2902;">Batal</button>
-            </div>
         </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
